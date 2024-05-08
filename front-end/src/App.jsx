@@ -22,10 +22,10 @@ function App() {
   };
 
   return (
-    <div>
-      <form onSubmit={onFormSubmit}>
+    <div className='container'>
+      <form className='form' onSubmit={onFormSubmit}>
         <input type="file" onChange={onFileChange} />
-        <button type="submit">Subir</button>
+        <button type="submit">Subir y Analizar</button>
       </form>
       {response && <pre>{response}</pre>}
     </div>

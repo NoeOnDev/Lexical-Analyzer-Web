@@ -4,3 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
