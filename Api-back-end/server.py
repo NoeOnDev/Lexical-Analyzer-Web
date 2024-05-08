@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from dotenv import load_dotenv
 import os
 import ply.lex as lex
@@ -35,6 +35,21 @@ def t_error(t):
     t.lexer.skip(1)
 
 lexer = lex.lex()
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return 'No file part'
+    file = request.files['file']
+    if file.filename == '':
+        return 'No selected file'
+    if file:
+        content = file.read().decode('utf-8')
+        lexer.input(content)
+        result = []
+        for tok in lexer:
+            result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
+        return '\n'.join(result)
 
 @app.route('/')
 def hello_world():
