@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
   const onFileFormSubmit = async (event) => {
     event.preventDefault();
     if (!file) {
-      alert('Por favor, selecciona un archivo');
+      toast.error('Por favor, selecciona un archivo');
       return;
     }
     const formData = new FormData();
@@ -29,12 +31,13 @@ function App() {
     });
     const data = await response.json();
     setResponse(data);
+    toast.success('El código de tu archivo ha sido analizado con éxito');
   };
 
   const onCodeFormSubmit = async (event) => {
     event.preventDefault();
     if (!code.trim()) {
-      alert('Por favor, introduce código');
+      toast.error('Por favor, introduce código');
       return;
     }
     const responseOnCode = await fetch('http://localhost:3003/analyze', {
@@ -46,6 +49,7 @@ function App() {
     });
     const data = await responseOnCode.json();
     setResponseOnCode(data);
+    toast.success('Tu código ha sido analizado con éxito');
   };
 
   return (
@@ -255,6 +259,7 @@ function App() {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
 
   );
