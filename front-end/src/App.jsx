@@ -41,15 +41,20 @@ function App() {
 
   return (
     <div className='container'>
-      <form className='form' onSubmit={onFileFormSubmit}>
-        <input type="file" onChange={onFileChange} />
-        <button type="submit">Subir y Analizar</button>
-      </form>
-      <form className='form-code' onSubmit={onCodeFormSubmit}>
-        <textarea onChange={onCodeChange} value={code} />
-        <button type="submit">Analizar Código</button>
-      </form>
-      {response && <pre>{response}</pre>}
+      <div className='container-A'>
+        <form className='form-A' onSubmit={onFileFormSubmit}>
+          <input id='file' type="file" onChange={onFileChange} />
+          <button type="submit">Subir y Analizar</button>
+        </form>
+
+      </div>
+      <div className='container-B'>
+        <form className='form-B' onSubmit={onCodeFormSubmit}>
+          <textarea onChange={onCodeChange} value={code} />
+          <button type="submit">Analizar Código</button>
+        </form>
+        {response && <pre>{response}</pre>}
+      </div>
     </div>
   );
 }
