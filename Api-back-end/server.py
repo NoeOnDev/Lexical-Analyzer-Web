@@ -6,8 +6,12 @@ import ply.lex as lex
 
 load_dotenv()
 
+HOST = os.getenv('HOST')
+PORT = int(os.getenv('PORT'))
+ORIGINS = os.getenv('ORIGINS')
+
 app = Flask(__name__)
-CORS(app, origins=os.getenv('ORIGINS'))
+CORS(app, origins=ORIGINS)
 
 tokens = (
     'FOR',
@@ -59,6 +63,4 @@ def hello_world():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-    host = os.getenv('HOST')
-    port = int(os.getenv('PORT'))
-    app.run(debug=True, host=host, port=port)
+    app.run(debug=True, host=HOST, port=PORT)
