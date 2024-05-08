@@ -31,7 +31,7 @@ t_ELSE = r'else'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
-t_ignore  = ' \t'
+t_ignore = ' \t,;.{}"0'':=+-*/<>_%&|!^~?@#[]'
 
 def t_newline(t):
     r'\n+'
@@ -52,6 +52,7 @@ def upload_file():
         return 'No selected file'
     if file:
         content = file.read().decode('utf-8')
+        lexer.lineno = 1
         lexer.input(content)
         result = []
         for tok in lexer:
