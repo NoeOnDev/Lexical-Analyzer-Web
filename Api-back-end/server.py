@@ -58,6 +58,16 @@ def upload_file():
         for tok in lexer:
             result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
         return '\n'.join(result)
+    
+@app.route('/analyze', methods=['POST'])
+def analyze_code():
+    code = request.data.decode('utf-8')
+    lexer.lineno = 1
+    lexer.input(code)
+    result = []
+    for tok in lexer:
+        result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
+    return '\n'.join(result)
 
 @app.route('/')
 def hello_world():
