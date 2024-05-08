@@ -70,50 +70,54 @@ function App() {
           <button type="submit">Subir y Analizar</button>
         </form>
         {response && (
-          <table>
-            <thead>
-              <tr>
-                <th>Línea</th>
-                <th>Reservada</th>
-                <th>Símbolo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {response.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.linea}</td>
-                  <td>{item.reserved}</td>
-                  <td>{item.symbol}</td>
+          <div className='table-container'> 
+            <table>
+              <thead>
+                <tr>
+                  <th>Línea</th>
+                  <th>Reservada</th>
+                  <th>Símbolo</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {response.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.linea}</td>
+                    <td>{item.reserved}</td>
+                    <td>{item.symbol}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
       <div className='container-B'>
         <form className='form-B' onSubmit={onCodeFormSubmit}>
-          <textarea placeholder='Introduce el codigo que deseas analizar' className='text-area-B' onChange={onCodeChange} value={code} />
+          <textarea placeholder='Introduce el código que deseas analizar' className='text-area-B' onChange={onCodeChange} value={code} />
           <button type="submit">Analizar Código</button>
         </form>
         {responseOnCode && (
-          <table>
-            <thead>
-              <tr>
-                <th>Línea</th>
-                <th>Reservada</th>
-                <th>Símbolo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {responseOnCode.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.linea}</td>
-                  <td>{item.reserved}</td>
-                  <td>{item.symbol}</td>
+          <div className='table-container'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Línea</th>
+                  <th>Reservada</th>
+                  <th>Símbolo</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {responseOnCode.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.linea}</td>
+                    <td>{item.reserved}</td>
+                    <td>{item.symbol}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
