@@ -5,6 +5,7 @@ function App() {
   const [file, setFile] = useState(null);
   const [code, setCode] = useState('');
   const [response, setResponse] = useState(null);
+  const [responseOnCode, setResponseOnCode] = useState(null);
 
   const onFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -28,15 +29,15 @@ function App() {
 
   const onCodeFormSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:3003/analyze', {
+    const responseOnCode = await fetch('http://localhost:3003/analyze', {
       method: 'POST',
       body: code,
       headers: {
         'Content-Type': 'text/plain',
       },
     });
-    const data = await response.text();
-    setResponse(data);
+    const data = await responseOnCode.text();
+    setResponseOnCode(data);
   };
 
   return (
@@ -46,14 +47,14 @@ function App() {
           <input id='file' type="file" onChange={onFileChange} />
           <button type="submit">Subir y Analizar</button>
         </form>
-
+        {response && <pre>{response}</pre>}
       </div>
       <div className='container-B'>
         <form className='form-B' onSubmit={onCodeFormSubmit}>
           <textarea className='text-area-B' onChange={onCodeChange} value={code} />
           <button type="submit">Analizar Código</button>
         </form>
-        {response && <pre>{response}</pre>}
+        {responseOnCode && <pre>{responseOnCode}</pre>}
       </div>
     </div>
   );
