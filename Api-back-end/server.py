@@ -23,11 +23,11 @@ tokens = (
     'RPAREN',
 )
 
-t_FOR = r'for'
-t_IF = r'if'
-t_DO = r'do'
-t_WHILE = r'while'
-t_ELSE = r'else'
+t_FOR = r'\bfor\b'
+t_IF = r'\bif\b'
+t_DO = r'\bdo\b'
+t_WHILE = r'\bwhile\b'
+t_ELSE = r'\belse\b'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 
