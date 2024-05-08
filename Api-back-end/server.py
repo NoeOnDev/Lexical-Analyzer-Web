@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -57,7 +57,7 @@ def upload_file():
         result = []
         for tok in lexer:
             result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
-        return '\n'.join(result)
+        return jsonify(result)
     
 @app.route('/analyze', methods=['POST'])
 def analyze_code():
@@ -67,7 +67,7 @@ def analyze_code():
     result = []
     for tok in lexer:
         result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
-    return '\n'.join(result)
+    return jsonify(result)
 
 @app.route('/')
 def hello_world():
