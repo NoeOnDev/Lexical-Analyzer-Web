@@ -56,7 +56,7 @@ def upload_file():
         lexer.input(content)
         result = []
         for tok in lexer:
-            result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
+            result.append({"linea": tok.lineno, "simbolo": f"<Reservada {tok.type}> {tok.value}"})
         return jsonify(result)
     
 @app.route('/analyze', methods=['POST'])
@@ -66,7 +66,7 @@ def analyze_code():
     lexer.input(code)
     result = []
     for tok in lexer:
-        result.append(f"Line {tok.lineno}: <Reservada {tok.type}> Simbolo: {tok.value}")
+        result.append({"linea": tok.lineno, "simbolo": f"<Reservada {tok.type}> {tok.value}"})
     return jsonify(result)
 
 @app.route('/')

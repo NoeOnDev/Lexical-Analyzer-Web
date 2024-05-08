@@ -23,7 +23,7 @@ function App() {
       method: 'POST',
       body: formData,
     });
-    const data = await response.text();
+    const data = await response.json(); // Parse JSON response
     setResponse(data);
   };
 
@@ -36,7 +36,7 @@ function App() {
         'Content-Type': 'text/plain',
       },
     });
-    const data = await responseOnCode.text();
+    const data = await responseOnCode.json(); // Parse JSON response
     setResponseOnCode(data);
   };
 
@@ -47,14 +47,48 @@ function App() {
           <input id='file' type="file" onChange={onFileChange} />
           <button type="submit">Subir y Analizar</button>
         </form>
-        {response && <pre>{response}</pre>}
+        {response && (
+          <table>
+            <thead>
+              <tr>
+                <th>Línea</th>
+                <th>Símbolo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {response.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.linea}</td>
+                  <td>{item.simbolo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
       <div className='container-B'>
         <form className='form-B' onSubmit={onCodeFormSubmit}>
           <textarea className='text-area-B' onChange={onCodeChange} value={code} />
           <button type="submit">Analizar Código</button>
         </form>
-        {responseOnCode && <pre>{responseOnCode}</pre>}
+        {responseOnCode && (
+          <table>
+            <thead>
+              <tr>
+                <th>Línea</th>
+                <th>Símbolo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {responseOnCode.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.linea}</td>
+                  <td>{item.simbolo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
