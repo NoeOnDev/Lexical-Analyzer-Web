@@ -50,7 +50,7 @@ function App() {
       </div>
       <div className='container-B'>
         <form className='form-B' onSubmit={onCodeFormSubmit}>
-          <textarea onChange={onCodeChange} value={code} />
+          <textarea className='text-area-B' onChange={onCodeChange} value={code} />
           <button type="submit">Analizar Código</button>
         </form>
         {response && <pre>{response}</pre>}
