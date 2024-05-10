@@ -1,4 +1,4 @@
-import './styles/ResponsableTable.css';
+import '../styles/ResponsableTable.css';
 
 const ResponseTable = ({ response }) => {
     return (

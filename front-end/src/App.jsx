@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import Button from './components/Button';
+import ResponseTable from './components/ResponsableTable';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
-import Button from './Button';
-import ResponseTable from './ResponsableTable';
 
 function App() {
   const [file, setFile] = useState(null);
