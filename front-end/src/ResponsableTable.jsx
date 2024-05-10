@@ -1,3 +1,5 @@
+import './styles/ResponsableTable.css';
+
 const ResponseTable = ({ response }) => {
     return (
         response && (
