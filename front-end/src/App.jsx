@@ -29,9 +29,14 @@ function App() {
       method: 'POST',
       body: formData,
     });
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      toast.error(errorMessage);
+      return;
+    }
     const data = await response.json();
     setResponse(data);
-    toast.success('El código de tu archivo ha sido analizado con éxito');
+    toast.success('Tu archivo ha sido analizado con éxito');
   };
 
   const onCodeFormSubmit = async (event) => {
@@ -47,10 +52,16 @@ function App() {
         'Content-Type': 'text/plain',
       },
     });
+    if (!responseOnCode.ok) {
+      const errorMessage = await responseOnCode.text();
+      toast.error(errorMessage);
+      return;
+    }
     const data = await responseOnCode.json();
     setResponseOnCode(data);
     toast.success('Tu código ha sido analizado con éxito');
   };
+  
 
   return (
     <div>

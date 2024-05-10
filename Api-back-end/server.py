@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -57,6 +57,8 @@ def upload_file():
         result = []
         for tok in lexer:
             result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+        if not result:
+            return make_response(jsonify({"error": "Not found tokens in the file"}), 404)
         return jsonify(result)
     
 @app.route('/analyze', methods=['POST'])
@@ -67,6 +69,8 @@ def analyze_code():
     result = []
     for tok in lexer:
         result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+    if not result:
+        return make_response(jsonify({"error": "Not found tokens in the code"}), 404)
     return jsonify(result)
 
 @app.route('/')
