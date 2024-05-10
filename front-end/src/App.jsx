@@ -32,7 +32,7 @@ function App() {
       body: formData,
     });
     if (!response.ok) {
-      const errorMessage = await response.text();
+      const errorMessage = response.status === 404 ? 'No se encontraron tokens válidos en el archivo analizado' : await response.text();
       toast.error(errorMessage);
       return;
     }
@@ -55,7 +55,7 @@ function App() {
       },
     });
     if (!responseOnCode.ok) {
-      const errorMessage = await responseOnCode.text();
+      const errorMessage = responseOnCode.status === 404 ? 'No se encontraron tokens válidos en el código analizado' : await responseOnCode.text();
       toast.error(errorMessage);
       return;
     }

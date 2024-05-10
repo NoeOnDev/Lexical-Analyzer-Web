@@ -75,7 +75,7 @@ def analyze_code():
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Hello, World! Api-back-end is running on {}:{}'.format(HOST, PORT)
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
