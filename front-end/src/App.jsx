@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import './styles/App.css';
 import Button from './button';
 
 function App() {
