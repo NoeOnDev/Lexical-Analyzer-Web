@@ -43,20 +43,24 @@ def t_error(t):
 
 lexer = lex.lex()
 
+def analyze_content(content):
+    lexer.lineno = 1
+    lexer.input(content)
+    result = []
+    for tok in lexer:
+        result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+    return result
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
-        return 'No file part'
+        return make_response(jsonify({"error": "No file part"}), 400)
     file = request.files['file']
     if file.filename == '':
-        return 'No selected file'
+        return make_response(jsonify({"error": "No selected file"}), 400)
     if file:
         content = file.read().decode('utf-8')
-        lexer.lineno = 1
-        lexer.input(content)
-        result = []
-        for tok in lexer:
-            result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+        result = analyze_content(content)
         if not result:
             return make_response(jsonify({"error": "Not found tokens in the file"}), 404)
         return jsonify(result)
@@ -64,11 +68,9 @@ def upload_file():
 @app.route('/analyze', methods=['POST'])
 def analyze_code():
     code = request.data.decode('utf-8')
-    lexer.lineno = 1
-    lexer.input(code)
-    result = []
-    for tok in lexer:
-        result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+    if not isinstance(code, str):
+        return make_response(jsonify({"error": "Invalid input"}), 400)
+    result = analyze_content(code)
     if not result:
         return make_response(jsonify({"error": "Not found tokens in the code"}), 404)
     return jsonify(result)
