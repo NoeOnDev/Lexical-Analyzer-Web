@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/App.css';
-import Button from './button';
+import Button from './Button';
+import ResponseTable from './ResponsableTable';
 
 function App() {
   const [file, setFile] = useState(null);
@@ -87,56 +88,14 @@ function App() {
             </label>
             <Button text='Generar Análisis' />
           </form>
-          {response && (
-            <div className='table-container'>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Línea</th>
-                    <th>Reservada</th>
-                    <th>Símbolo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {response.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.linea}</td>
-                      <td>{item.reserved}</td>
-                      <td>{item.symbol}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          <ResponseTable response={response} />
         </div>
         <div className='container-B'>
           <form className='form-B' onSubmit={onCodeFormSubmit}>
             <textarea placeholder='Introduce el código que deseas analizar' className='text-area-B' onChange={onCodeChange} value={code} />
             <Button text='Generar Análisis' />
           </form>
-          {responseOnCode && (
-            <div className='table-container'>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Línea</th>
-                    <th>Reservada</th>
-                    <th>Símbolo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {responseOnCode.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.linea}</td>
-                      <td>{item.reserved}</td>
-                      <td>{item.symbol}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+          <ResponseTable response={responseOnCode} />
         </div>
       </div>
       <ToastContainer />

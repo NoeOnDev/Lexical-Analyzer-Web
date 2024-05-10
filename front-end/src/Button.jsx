@@ -1,6 +1,6 @@
-import './styles/button.css';
+import './styles/Button.css';
 
-function Button({ text }) {
+const Button = ({ text }) => {
     return (
         <div className="sp">
             <button type="submit" className="sparkle-button">
