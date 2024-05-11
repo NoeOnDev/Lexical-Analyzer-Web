@@ -8,11 +8,13 @@ import './styles/App.css';
 function App() {
   const [file, setFile] = useState(null);
   const [code, setCode] = useState('');
+  const [fileName, setFileName] = useState('');
   const [response, setResponse] = useState(null);
   const [responseOnCode, setResponseOnCode] = useState(null);
 
   const onFileChange = (event) => {
     setFile(event.target.files[0]);
+    setFileName(event.target.files[0].name);
   };
 
   const onCodeChange = (event) => {
@@ -82,7 +84,7 @@ function App() {
                 </svg>
               </div>
               <div className="text">
-                <span>Click to upload File</span>
+                <span>{fileName || 'Click to upload File'}</span>
               </div>
               <input className='upload-file' id='file' type="file" onChange={onFileChange} />
             </label>
