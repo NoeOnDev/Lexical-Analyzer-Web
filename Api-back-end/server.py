@@ -56,6 +56,8 @@ def analyze_content(content):
     lexer.input(content)
     result = []
     for tok in lexer:
+        if tok.type == 'PR' and tok.value not in ['programa', 'int', 'read', 'printf', 'la', 'es', 'end']:
+            tok.type = 'ER'
         result.append({"linea": tok.lineno, "type": tok.type, "value": tok.value, "token": tok.value})
     return result
 
@@ -89,8 +91,6 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
-
-
 
 
 # tokens = (
