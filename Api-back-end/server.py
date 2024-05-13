@@ -13,19 +13,7 @@ ORIGINS = os.getenv('ORIGINS')
 app = Flask(__name__)
 CORS(app, origins=ORIGINS)
 
-tokens = (
-    'PR',
-    'ID',
-    'PI',
-    'PD',
-    'LI',
-    'LD',
-    'PC',
-    'VAR',
-    'SUM',
-    'CO',
-    'ER',
-)
+tokens = ('PR','ID','PI','PD','LI','LD','PC','VAR','SUM','CO','ER')
 
 t_PR = r'\b(programa|int|read|printf|la|es|end)\b'
 t_ID = r'\bsuma\b'
