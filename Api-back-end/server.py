@@ -14,24 +14,32 @@ app = Flask(__name__)
 CORS(app, origins=ORIGINS)
 
 tokens = (
-    'FOR',
-    'IF',
-    'DO',
-    'WHILE',
-    'ELSE',
-    'LPAREN',
-    'RPAREN',
+    'PR',
+    'ID',
+    'PI',
+    'PD',
+    'LI',
+    'LD',
+    'PC',
+    'VAR',
+    'SUM',
+    'CO',
+    'ER',
 )
 
-t_FOR = r'\bfor\b'
-t_IF = r'\bif\b'
-t_DO = r'\bdo\b'
-t_WHILE = r'\bwhile\b'
-t_ELSE = r'\belse\b'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
+t_PR = r'\b(programa|int|read|printf|la|es|end)\b'
+t_ID = r'\bsuma\b'
+t_PI = r'\('
+t_PD = r'\)'
+t_LI = r'{'
+t_LD = r'}'
+t_PC = r';'
+t_VAR = r'\b(a|b|c)\b'
+t_SUM = r'\+'
+t_CO = r','
+t_ER = r'.'
 
-t_ignore = ' \t,;.{}"0'':=+-*/<>_%&|!^~?@#[]'
+t_ignore = ' \t".0'':=+-*/<>_%&|!^~?@#[]'
 
 def t_newline(t):
     r'\n+'
@@ -48,7 +56,7 @@ def analyze_content(content):
     lexer.input(content)
     result = []
     for tok in lexer:
-        result.append({"linea": tok.lineno, "reserved": tok.type, "symbol": tok.value})
+        result.append({"linea": tok.lineno, "type": tok.type, "value": tok.value, "token": tok.value})
     return result
 
 @app.route('/upload', methods=['POST'])
@@ -81,3 +89,24 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
+
+
+
+
+# tokens = (
+#    'FOR',
+#    'IF',
+#    'DO',
+#    'WHILE',
+#    'ELSE',
+#    'LPAREN',
+#    'RPAREN',
+# )
+
+# t_FOR = r'\bfor\b'
+# t_IF = r'\bif\b'
+# t_DO = r'\bdo\b'
+# t_WHILE = r'\bwhile\b'
+# t_ELSE = r'\belse\b'
+# t_LPAREN = r'\('
+# t_RPAREN = r'\)'
