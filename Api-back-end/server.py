@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+import uuid
 import ply.lex as lex
 
 load_dotenv()
@@ -46,7 +47,7 @@ def analyze_content(content):
     for tok in lexer:
         if tok.type == 'PR' and tok.value not in ['programa', 'int', 'read', 'printf', 'la', 'es', 'end']:
             tok.type = 'ER'
-        result.append({"linea": tok.lineno, "type": tok.type, "value": tok.value, "token": tok.value})
+        result.append({"id": str(uuid.uuid4()), "linea": tok.lineno, "type": tok.type, "value": tok.value, "token": tok.value})
     return result
 
 @app.route('/upload', methods=['POST'])

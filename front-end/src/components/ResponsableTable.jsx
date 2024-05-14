@@ -15,7 +15,7 @@ const ResponseTable = ({ response }) => {
         acc.CO += item.type === 'CO' ? 1 : 0;
         acc.ER += item.type === 'ER' ? 1 : 0;
         return acc;
-    }, {TOKEN: 0 ,PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0}) : {TOKEN: 0, PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0};
+    }, { TOKEN: 0, PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0 }) : { TOKEN: 0, PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0 };
 
     return (
         response && (
@@ -23,24 +23,24 @@ const ResponseTable = ({ response }) => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Línea</th>
-                            <th>Token</th>
-                            <th>PR</th>
-                            <th>ID</th>
-                            <th>PI</th>
-                            <th>PD</th>
-                            <th>LI</th>
-                            <th>LD</th>
-                            <th>PC</th>
-                            <th>VAR</th>
-                            <th>OP</th>
-                            <th>CO</th>
-                            <th>ER</th>
+                            <th title="Línea de código">Línea</th>
+                            <th title="Token encontrado">Token</th>
+                            <th title="Palabra Reservada">PR</th>
+                            <th title="Identificador">ID</th>
+                            <th title="Paréntesis Izquierdo">PI</th>
+                            <th title="Paréntesis Derecho">PD</th>
+                            <th title="Llave Izquierda">LI</th>
+                            <th title="Llave Derecha">LD</th>
+                            <th title="Punto y Coma">PC</th>
+                            <th title="Variable">VAR</th>
+                            <th title="Operador">OP</th>
+                            <th title="Comentario">CO</th>
+                            <th title="Error">ER</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {response.map((item, index) => (
-                            <tr key={index}>
+                        {response.map((item) => (
+                            <tr key={item.id}>
                                 <td>{item.linea}</td>
                                 <td>{item.token}</td>
                                 <td>{item.type === 'PR' ? 'x' : ''}</td>
