@@ -2,6 +2,7 @@ import '../styles/ResponsableTable.css';
 
 const ResponseTable = ({ response }) => {
     const totals = response ? response.reduce((acc, item) => {
+        acc.TOKEN = item.token ? acc.TOKEN + 1 : acc.TOKEN;
         acc.PR += item.type === 'PR' ? 1 : 0;
         acc.ID += item.type === 'ID' ? 1 : 0;
         acc.PI += item.type === 'PI' ? 1 : 0;
@@ -10,11 +11,11 @@ const ResponseTable = ({ response }) => {
         acc.LD += item.type === 'LD' ? 1 : 0;
         acc.PC += item.type === 'PC' ? 1 : 0;
         acc.VAR += item.type === 'VAR' ? 1 : 0;
-        acc.SUM += item.type === 'SUM' ? 1 : 0;
+        acc.OP += item.type === 'OP' ? 1 : 0;
         acc.CO += item.type === 'CO' ? 1 : 0;
         acc.ER += item.type === 'ER' ? 1 : 0;
         return acc;
-    }, {PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, SUM: 0, CO: 0, ER: 0}) : {PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, SUM: 0, CO: 0, ER: 0};
+    }, {TOKEN: 0 ,PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0}) : {TOKEN: 0, PR: 0, ID: 0, PI: 0, PD: 0, LI: 0, LD: 0, PC: 0, VAR: 0, OP: 0, CO: 0, ER: 0};
 
     return (
         response && (
@@ -32,7 +33,7 @@ const ResponseTable = ({ response }) => {
                             <th>LD</th>
                             <th>PC</th>
                             <th>VAR</th>
-                            <th>SUM</th>
+                            <th>OP</th>
                             <th>CO</th>
                             <th>ER</th>
                         </tr>
@@ -50,14 +51,14 @@ const ResponseTable = ({ response }) => {
                                 <td>{item.type === 'LD' ? 'x' : ''}</td>
                                 <td>{item.type === 'PC' ? 'x' : ''}</td>
                                 <td>{item.type === 'VAR' ? 'x' : ''}</td>
-                                <td>{item.type === 'SUM' ? 'x' : ''}</td>
+                                <td>{item.type === 'OP' ? 'x' : ''}</td>
                                 <td>{item.type === 'CO' ? 'x' : ''}</td>
                                 <td>{item.type === 'ER' ? 'x' : ''}</td>
                             </tr>
                         ))}
                         <tr>
                             <td>Total</td>
-                            <td></td>
+                            <td>{totals.TOKEN}</td>
                             <td>{totals.PR}</td>
                             <td>{totals.ID}</td>
                             <td>{totals.PI}</td>
@@ -66,7 +67,7 @@ const ResponseTable = ({ response }) => {
                             <td>{totals.LD}</td>
                             <td>{totals.PC}</td>
                             <td>{totals.VAR}</td>
-                            <td>{totals.SUM}</td>
+                            <td>{totals.OP}</td>
                             <td>{totals.CO}</td>
                             <td>{totals.ER}</td>
                         </tr>

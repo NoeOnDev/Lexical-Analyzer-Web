@@ -13,7 +13,7 @@ ORIGINS = os.getenv('ORIGINS')
 app = Flask(__name__)
 CORS(app, origins=ORIGINS)
 
-tokens = ('PR','ID','PI','PD','LI','LD','PC','VAR','SUM','CO','ER')
+tokens = ('PR','ID','PI','PD','LI','LD','PC','VAR','OP','CO','ER')
 
 t_PR = r'\b(programa|int|read|printf|la|es|end)\b'
 t_ID = r'\bsuma\b'
@@ -23,11 +23,11 @@ t_LI = r'{'
 t_LD = r'}'
 t_PC = r';'
 t_VAR = r'\b(a|b|c)\b'
-t_SUM = r'\+'
+t_OP = r'\+|-|\*'
 t_CO = r','
-t_ER = r'.'
+t_ER = r'\b\w+\b'
 
-t_ignore = ' \t".0'':=+-*/<>_%&|!^~?@#[]'
+t_ignore = ' \t".0'':=/<>_%&|!^~?@#[]'
 
 def t_newline(t):
     r'\n+'
@@ -79,22 +79,3 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
-
-
-# tokens = (
-#    'FOR',
-#    'IF',
-#    'DO',
-#    'WHILE',
-#    'ELSE',
-#    'LPAREN',
-#    'RPAREN',
-# )
-
-# t_FOR = r'\bfor\b'
-# t_IF = r'\bif\b'
-# t_DO = r'\bdo\b'
-# t_WHILE = r'\bwhile\b'
-# t_ELSE = r'\belse\b'
-# t_LPAREN = r'\('
-# t_RPAREN = r'\)'
