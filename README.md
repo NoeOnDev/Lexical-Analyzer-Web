@@ -6,7 +6,7 @@
 git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
 ```
 
-## Empieza con la configuración e instalación de las dependencias de la Api-back-end
+## Empezaremos con la configuración e instalación de las dependencias de la Api-back-end
 
 1. Asegúrese de tener Python 3.8 o superior instalado en su sistema. Puede verificar su versión de Python con el siguiente comando:
 
@@ -45,3 +45,16 @@ git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
     ```bash
     python3 server.py
     ```
+
+7. Si ha completado todos los pasos correctamente, en su terminal o consola debería mostrar un mensaje igual al siguiente:
+
+    ```bash
+    * Serving Flask app 'server'
+    * Debug mode: on
+    WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+    * Running on http://localhost:3003
+    Press CTRL+C to quit
+    * Restarting with stat
+    * Debugger is active!
+    ```
+
