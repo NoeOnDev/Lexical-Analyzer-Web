@@ -1,6 +1,6 @@
 # Analizador léxico web
 
-## Clonar el repositorio
+## Instrucciones de clonación del repositorio
 
 ```bash
 git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
@@ -26,13 +26,13 @@ git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
     cd Lexical-Analyzer-Web/Api-back-end/
     ```
 
-4. Debe crear un archivo .env para almacenar las variables de entorno que necesita la Api-back-end para funcionar;
+4. Debe crear un archivo .env para almacenar las variables de entorno que necesita la API back-end para funcionar;
 
     ```bash
     touch .env
     ```
 
-5. Dentro del proyecto de Api-back-end encontrará un archivo .example.env que contiene las varibales de entorno necesarias para que Api-back-end funcione, copie y pegue esas varibales en el archivo .env creado anteiormente, Por ejemplo:
+5. Dentro del proyecto de la API back-end encontrará un archivo .example.env que contiene las variables de entorno necesarias para que la API back-end funcione, copie y pegue esas variables en el archivo .env creado anteriormente, Por ejemplo:
 
     ```bash
     PORT = 3003
