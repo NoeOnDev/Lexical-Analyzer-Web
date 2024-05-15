@@ -6,7 +6,7 @@
 git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
 ```
 
-## Empezaremos con la configuración e instalación de las dependencias de la Api-back-end
+## Configuración e instalación de las dependencias de la API back-end
 
 1. Asegúrese de tener Python 3.8 o superior instalado en su sistema. Puede verificar su versión de Python con el siguiente comando:
 
@@ -20,7 +20,7 @@ git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
     pip install flask flask_cors python-dotenv ply
     ```
 
-3. Entre a la carpeta donde se encuentra la Api-back-end:
+3. Entre a la carpeta donde se encuentra la API back-end:
 
     ```bash
     cd Lexical-Analyzer-Web/Api-back-end/
