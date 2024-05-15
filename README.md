@@ -102,3 +102,7 @@ El analizador léxico toma un archivo de entrada o un código fuente y lo analiz
 2. Video de la funcionalidad
 
     [![Video de la funcionalidad](http://img.youtube.com/vi/9PIXphm_UYs/0.jpg)](http://www.youtube.com/watch?v=9PIXphm_UYs "Video de la funcionalidad")
+
+3. Resultados del análisis léxico
+
+    ![Resultados del análisis léxico](./SCREENSHOTS/resultados.png)
