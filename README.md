@@ -94,3 +94,11 @@ git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
 ## Funcionalidad
 
 El analizador léxico toma un archivo de entrada o un código fuente y lo analiza para identificar los tokens definidos.
+
+1. Página de inicio
+
+    ![Pantalla principal de la aplicación](./SCREENSHOTS/principal.png)
+
+2. Video de la funcionalidad
+
+    [![Video de la funcionalidad](http://img.youtube.com/vi/9PIXphm_UYs/0.jpg)](http://www.youtube.com/watch?v=9PIXphm_UYs "Video de la funcionalidad")
