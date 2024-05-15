@@ -58,3 +58,39 @@ git clone https://github.com/NoeOnDev/Lexical-Analyzer-Web.git
     * Debugger is active!
     ```
 
+## Configuración e instalación de las dependencias del front-end
+
+1. Asegúrese de tener Node.js y npm instalados en su sistema. Puede verificar sus versiones con los siguientes comandos:
+
+    ```bash
+    node --version
+    npm --version
+    ```
+
+2. Entre a la carpeta donde se encuentra el front-end:
+
+    ```bash
+    cd Lexical-Analyzer-Web/front-end/
+    ```
+
+3. Instale las dependencias de Node.js necesarias con npm:
+
+    ```bash
+    npm install
+    ```
+
+4. Ahora puede iniciar el proyecto front-end con el siguiente comando:
+
+    ```bash
+    npm run dev
+    ```
+
+5. Si cuenta con una versión igual o superior a las v22.0.0 de node, le recomiendo usar el siguiente comando:
+
+    ```bash
+    node --run dev
+    ```
+
+## Funcionalidad
+
+El analizador léxico toma un archivo de entrada o un código fuente y lo analiza para identificar los tokens definidos.
